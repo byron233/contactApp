@@ -1,0 +1,54 @@
+<h1>My contacts</h1>
+
+{{#if contact}}
+    <div class="contactsContent" id="contactsContent">
+        {{#each contact}}
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">{{name}} {{lastname}}</h3>
+                            <p class="card-text"><strong>Phone number: </strong>{{phone}}</p>
+                            <p class="card-text"><strong>Address: </strong>{{address}}</p>
+                            <p class="card-text"><strong>Email: </strong>{{email}}</p>
+                            <p class="card-text"><strong>Description: </strong>{{description}}</p>
+                            <a href="/contact/edit/{{_id}}" class="btn btn-primary editBtn">Edit</a>
+                            <button class="btn btn-danger deleteBtn" name="/contact/delete/{{_id}}">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+
+    <!--Modal para eliminar-->
+    <div class="darkBg" id="darkBg"></div>
+    <div class="modal-dialog" id="deleteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Contact?</h5>
+                <button type="button" class="btn-close" aria-label="Close" id="closeModal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure about to delete this contact?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="noDelete">No, Close</button>
+                <button type="button" class="btn btn-danger" id="yesDelete">Yes, Delete</button>
+            </div>
+            </div>
+    </div>
+
+    
+{{else}}
+    <div class="firstCard card">
+        <div class=" card-body">
+            En esta pestaña se veran todos los contactos que tengas agregados, lastimosamente aún no tienes ninguno,
+            pero no te preocupes, preciona el boton de abajo para crear uno :D
+        </div>
+    </div>
+    <a href="/"  class="btn btn-primary btnA">Create a contact</a>
+{{/if}}
+
+<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+<script src="/Js/scripts.js"></script>
